@@ -24,38 +24,43 @@ public class AppConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        http.sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(Authorize -> Authorize
-                		.requestMatchers("/api/admin/**").hasAnyRole("RESTAURANT_OWNER","ADMIN")
-                                .requestMatchers("/api/**").authenticated()
-                                
-                                .anyRequest().permitAll()
-                )
-                .addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class)
-                .csrf(csrf -> csrf.disable())
-                .cors(cors -> cors.configurationSource(corsConfigurationSource()));
-               
-		
-		return http.build();
-		
-	}
-	
-    // CORS Configuration
+        http.sessionManagement(management -> 
+                management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(authorize -> authorize
+                    .requestMatchers("/api/admin/**")
+                    .hasAnyRole("RESTAURANT_OWNER", "ADMIN")
+                    .requestMatchers("/api/**").authenticated()
+                    .anyRequest().permitAll()
+            )
+            .addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class)
+            .csrf(csrf -> csrf.disable())
+            .cors(cors -> cors.configurationSource(corsConfigurationSource()));
+
+        return http.build();
+    }
+
+    // ✅ Updated CORS Configuration
     private CorsConfigurationSource corsConfigurationSource() {
         return new CorsConfigurationSource() {
             @Override
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
+
                 CorsConfiguration cfg = new CorsConfiguration();
+
                 cfg.setAllowedOrigins(Arrays.asList(
-                    "http://localhost:3000",
-	                "https://bytebites.vercel.app",
-                    "http://localhost:4200"
+                        "http://localhost:3000",
+                        "https://bytebites-tau.vercel.app"
                 ));
-                cfg.setAllowedMethods(Collections.singletonList("*"));
-                cfg.setAllowCredentials(true);
+
+                cfg.setAllowedMethods(Arrays.asList(
+                        "GET", "POST", "PUT", "DELETE", "OPTIONS"
+                ));
+
                 cfg.setAllowedHeaders(Collections.singletonList("*"));
+                cfg.setAllowCredentials(true);
                 cfg.setExposedHeaders(Arrays.asList("Authorization"));
                 cfg.setMaxAge(3600L);
+
                 return cfg;
             }
         };
@@ -63,7 +68,6 @@ public class AppConfig {
 
     @Bean
     PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-
+        return new BCryptPasswordEncoder();
+    }
 }
