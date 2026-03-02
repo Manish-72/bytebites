@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,6 +23,8 @@ import com.bytebites.repository.UserRepository;
 @Service
 public class UserServiceImplementation implements UserService {
 
+	@Value("${app.frontend.url}")
+	private String frontendUrl;
 
 	private UserRepository userRepository;
 	private JwtProvider jwtProvider;
@@ -90,7 +93,7 @@ public class UserServiceImplementation implements UserService {
         passwordResetTokenRepository.save(passwordResetToken);
 
         // Send an email containing the reset link
-        sendEmail(user.getEmail(), "Password Reset", "Click the following link to reset your password: http://localhost:3000/account/reset-password?token=" + resetToken);
+        sendEmail(user.getEmail(), "Password Reset", "Click the following link to reset your password: " + frontendUrl + "/account/reset-password?token=" + resetToken);
 	}
 	private void sendEmail(String to, String subject, String message) {
 	    SimpleMailMessage mailMessage = new SimpleMailMessage();
