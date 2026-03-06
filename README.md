@@ -1,87 +1,67 @@
-# ByteBites – Full-Stack Food Ordering Platform
+# ByteBites — Full-Stack Food Ordering Platform
 
-ByteBites is a complete **food ordering and restaurant management system** that I built to demonstrate my full-stack development skills.
+ByteBites is a production-style food ordering platform built with a React frontend and Spring Boot backend. It supports three personas—**Customer**, **Restaurant Admin**, and **Super Admin**—with role-specific workflows for ordering, restaurant operations, and platform governance.
 
-This project shows my ability to design and connect:
-- a modern **React frontend** for customers, restaurant admins, and super-admin users,
-- a secure **Spring Boot backend** with role-based APIs,
-- and a scalable data model for real-world ordering workflows.
+## 🌐 Live Demo
 
----
-
-## 🚀 Project Overview
-
-ByteBites simulates a real production-style food delivery ecosystem with:
-- Customer-facing food discovery and ordering,
-- Restaurant-side menu/order/event management,
-- Super-admin controls for platform-level operations,
-- Authentication, payments, notifications, and profile management.
-
-This repository contains:
-- `frontend-react/` → React + Redux application
-- `backend-springboot/` → Spring Boot REST API
+**Deployed App:** https://bytebites-tau.vercel.app/
 
 ---
 
-## 🧠 Skills Demonstrated Through This Project
+## 🚀 Project Highlights
 
-### 1) Full-Stack Architecture
-- Built and maintained both frontend and backend layers.
-- Designed clean separation between UI, routing, API logic, service logic, and persistence.
-
-### 2) Frontend Engineering (React)
-- Developed modular UI components with route-based page architecture.
-- Implemented role-aware flows for customers/admin/super-admin users.
-- Integrated Redux state management and async API actions.
-- Used modern UI tooling including MUI, Formik, Yup, and Tailwind.
-
-### 3) Backend Engineering (Spring Boot)
-- Designed RESTful APIs with dedicated controllers and services.
-- Implemented secure auth flow with JWT and Spring Security.
-- Built domain-driven models for users, restaurants, orders, cart, reviews, and notifications.
-- Integrated payments and email capabilities for real business workflows.
-
-### 4) Database & Domain Modeling
-- Created relational entities and repository layers for core food-ordering operations.
-- Modeled relationships among customers, restaurants, menu items, cart items, orders, and payments.
-
-### 5) Product Thinking & Real-World Features
-- Implemented user journeys from sign-up/login to checkout/payment success.
-- Added admin tooling for menu, category, ingredients, and order operations.
-- Included super-admin capabilities to support platform-level governance.
+- End-to-end full-stack architecture (UI, API, data, security)
+- Role-based authentication and authorization
+- Real-world ordering lifecycle (browse → cart → checkout → order tracking)
+- Admin tools for restaurant and menu operations
+- Modern frontend ecosystem with scalable state management
 
 ---
 
-## ✅ Key Features Delivered
+## 🧩 System Overview
 
-### Customer Features
-- User authentication and profile/account flows
+This repository includes:
+
+- `frontend-react/` — React + Redux client application
+- `backend-springboot/` — Spring Boot REST APIs and business logic
+- `images/` — Product screenshots used in this documentation
+
+---
+
+## ✅ Core Feature Set
+
+### Customer Experience
+
+- Registration and login flows
 - Browse restaurants and menus
-- Add to cart and place orders
-- Checkout and payment-success flow
-- Search and favorites-style customer experience components
+- Cart, checkout, and payment flow
+- Profile and account management
 
-### Restaurant Admin Features
-- Create/manage restaurant
-- Manage menu items and categories
-- Manage ingredients and events
-- View and process restaurant orders
+### Restaurant Admin Experience
 
-### Super Admin Features
-- Platform-level dashboard and restaurant/customer visibility
-- Restaurant request handling and management workflows
+- Restaurant creation and management
+- Menu, categories, and ingredient management
+- Event management
+- Order processing workflows
 
-### Backend Platform Features
-- JWT-based security and protected APIs
-- Role-aware authorization behavior
-- Order, cart, review, notification, and payment service modules
-- Password reset support and email integration
+### Super Admin Experience
+
+- Platform-level visibility and governance controls
+- Restaurant request and management workflows
+
+### Backend Platform Capabilities
+
+- JWT-based authentication + protected APIs
+- Role-aware authorization
+- Modular services for cart, orders, reviews, notifications, and payments
+- Email and password reset support
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - React 18
 - Redux + Redux Thunk
 - React Router
@@ -91,13 +71,46 @@ This repository contains:
 - Tailwind CSS
 
 ### Backend
+
 - Java 17
 - Spring Boot 3
-- Spring Web, Spring Security, Spring Data JPA, Validation
+- Spring Security + Spring Data JPA
 - JWT (jjwt)
-- MySQL connector
+- MySQL Connector
 - Stripe Java SDK
 - Spring Mail
+
+---
+
+## 🖼️ Product Screenshots
+
+> **Image mapping rule used:** files starting with `admin` are shown under Admin; all others are shown under Customer.
+
+### Customer Screens
+
+#### Customer Homepage
+![Customer Homepage](images/customer-homepage.png)
+
+#### Restaurant Discovery
+![Restaurant Discovery](images/restaurant.png)
+
+#### Registration Page
+![Registration Page](images/registration-page.png)
+
+#### Login Page
+![Login Page](images/login-page.png)
+
+#### Customer Flow — Additional Views
+![Customer Additional View 1](images/Screenshot%202026-03-06%20145023.png)
+
+![Customer Additional View 2](images/Screenshot%202026-03-06%20145032.png)
+
+![Customer Additional View 3](images/Screenshot%202026-03-06%20145057.png)
+
+### Admin Screens
+
+#### Admin Menu Management
+![Admin Menu Management](images/admin-menu.png)
 
 ---
 
@@ -105,16 +118,18 @@ This repository contains:
 
 ```text
 bytebites/
-├── frontend-react/      # React client application
-├── backend-springboot/  # Spring Boot REST API
-└── README.md            # Project overview and skill showcase
+├── backend-springboot/
+├── frontend-react/
+├── images/
+└── README.md
 ```
 
 ---
 
-## ▶️ How to Run
+## ▶️ Local Development
 
 ### Frontend
+
 ```bash
 cd frontend-react
 npm install
@@ -122,21 +137,16 @@ npm start
 ```
 
 ### Backend
+
 ```bash
 cd backend-springboot
 ./mvnw spring-boot:run
 ```
 
-> Configure your environment variables / application properties (DB, JWT, Stripe, Mail) before running in a real environment.
+> Before running in a real environment, configure DB, JWT, Stripe, and Mail settings.
 
 ---
 
-## 📌 Why This Project Is Important
+## 📌 Engineering Value
 
-ByteBites highlights my ability to:
-- ship end-to-end product features,
-- work across UI, API, data, and security layers,
-- structure a scalable codebase with multiple user roles,
-- and build software that is both technically complete and business-oriented.
-
-If you're reviewing my profile (HR, hiring manager, or technical interviewer), this project reflects practical development experience across the full software lifecycle.
+ByteBites demonstrates practical full-stack engineering across product design, API architecture, security, and role-based experience design. It reflects the ability to ship user-facing features while maintaining clean backend modularity and scalable project structure.
