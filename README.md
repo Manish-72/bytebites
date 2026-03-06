@@ -100,14 +100,13 @@ This repository includes:
 #### Login Page
 ![Login Page](images/login-page.png)
 
-#### Customer Flow — Additional Views
+### Admin Screens
+
 ![Customer Additional View 1](images/Screenshot%202026-03-06%20145023.png)
 
 ![Customer Additional View 2](images/Screenshot%202026-03-06%20145032.png)
 
 ![Customer Additional View 3](images/Screenshot%202026-03-06%20145057.png)
-
-### Admin Screens
 
 #### Admin Menu Management
 ![Admin Menu Management](images/admin-menu.png)
